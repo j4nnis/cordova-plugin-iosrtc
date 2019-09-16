@@ -23,7 +23,7 @@ class PluginEnumerateDevices {
 		NSLog("PluginEnumerateDevices#call()")
 		initAudioDevices()
 		var audioDevices: [MediaDeviceInfo] = getAllAudioDevices()
-		let devices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession.init( deviceTypes: [ AVCaptureDevice.DeviceType.builtInMicrophone, AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: nil, position: AVCaptureDevice.Position.unspecified).devices  
+		let devices: [AVCaptureDevice] = AVCaptureDevice.DiscoverySession.init( deviceTypes: [ AVCaptureDevice.DeviceType.builtInMicrophone, AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: nil, position: AVCaptureDevice.Position.unspecified).devices
 		let json: NSMutableDictionary = [
 			"devices": NSMutableDictionary()
 		]
@@ -93,7 +93,7 @@ fileprivate func getAllAudioDevices() -> [MediaDeviceInfo] {
 		audioDevicesArr.append(MediaDeviceInfo(deviceId: audioInput.uid, kind: "audioinput", label: audioInput.portName))
 		
 		// Initialize audioInputSelected. Default Built-In Microphone
-		if audioInput.portType == AVAudioSession.Port.builtInMic {
+		if audioInput.portType == AVAudioSessionPortBuiltInMic {
 			PluginEnumerateDevices.saveAudioDevice(inputDeviceUID: audioInput.uid)
 		}
 	}
@@ -104,7 +104,7 @@ fileprivate func initAudioDevices() -> Void {
 	let audioSession: AVAudioSession = AVAudioSession.sharedInstance()
 	
 	do {
-		try audioSession.setCategory(AVAudioSession.Category.playAndRecord, options: .allowBluetooth)
+		try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .allowBluetooth)
 		try audioSession.setActive(true)
 	} catch  {
 		print("Error messing with audio session: \(error)")
