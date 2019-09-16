@@ -5,18 +5,8 @@
 
 An iOS Cordova application including the *cordova-plugin-iosrtc* plugin can be built using the [cordova-cli](https://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface) or Xcode.
 
-The plugin provides a ["hook"](../extra/hooks/iosrtc-swift-support.js) to automate required modifications in both *cordova-cli* and Xcode generated projects.
+The plugin provides a ["hook"](../extra/hooks/iosrtc-swift-support.js) to automate required modifications in both *cordova-cli* and Xcode generated projects. It is no longer necessary to add the "hook" manually, it is installed when platform is removed and added again.
 
-* Put the hook script under the "hooks/" folder of your Cordova project (or wherever you prefer) and give it execution permission:
-```bash
-$ chmod +x hooks/iosrtc-swift-support.js
-```
-* Add these lines to you "config.xml" file:
-```xml
-<platform name="ios">
-	<hook type="after_platform_add" src="hooks/iosrtc-swift-support.js" />
-</platform>
-```
 * Make sure you have the NPM [xcode](https://www.npmjs.com/package/xcode) package installed (locally or globally):
 ```bash
 $ npm install -g xcode
@@ -50,15 +40,15 @@ It may happen that your Cordova application uses more than a single plugin coded
 #import "cordova-plugin-iosrtc-Bridging-Header.h"
 ```
 
-And then set `Unified-Bridging-Header.h` as the value of the "Objective-C Bridging Header" build setting in your Xcode project. For more information check this [issue](https://github.com/BasqueVoIPMafia/cordova-plugin-iosrtc/issues/9).
+And then set `Unified-Bridging-Header.h` as the value of the "Objective-C Bridging Header" build setting in your Xcode project. For more information check this [issue](https://github.com/cordova-rtc/cordova-plugin-iosrtc/issues/9).
 
 
 #### Xcode
 
 If you still prefer to do it manually open it with Xcode and follow these steps:
 
-* Set "iOS Deployment Target" to `7.0` or higher within your project settings.
-* Set "Deployment Target" to `7.0` or higher within the project target settings.
+* Set "iOS Deployment Target" to `10.2` or higher within your project settings.
+* Set "Deployment Target" to `10.2` or higher within the project target settings.
 * Within the project "Build Settings" add an entry to the "Runpath Search Paths" setting with value `@executable_path/Frameworks`.
 * Within the project "Build Settings" set "Objective-C Bridging Header" to `PROJECT_NAME/Plugins/cordova-plugin-iosrtc/cordova-plugin-iosrtc-Bridging-Header.h` (read more about the "Bridging Header" above).
 * Within the project "Build Settings" set "Enable Bitcode" to "No".

@@ -3,16 +3,16 @@
 'use strict';
 
 // This hook automates this:
-// https://github.com/BasqueVoIPMafia/cordova-plugin-iosrtc/blob/master/docs/Building.md
+// https://github.com/cordova-rtc/cordova-plugin-iosrtc/blob/master/docs/Building.md
 
 var
 	fs = require("fs"),
 	path = require("path"),
 	xcode = require('xcode'),
 
-	BUILD_VERSION = '9.0',
+	BUILD_VERSION = '10.2',
 	BUILD_VERSION_XCODE = '"' + BUILD_VERSION + '"',
-	SWIFT_VERSION = '3.0',
+	SWIFT_VERSION = '4.2',
 	SWIFT_VERSION_XCODE = '"' + SWIFT_VERSION + '"',
 	RUNPATH_SEARCH_PATHS = '@executable_path/Frameworks',
 	RUNPATH_SEARCH_PATHS_XCODE = '"' + RUNPATH_SEARCH_PATHS + '"',

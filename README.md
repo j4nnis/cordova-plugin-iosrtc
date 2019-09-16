@@ -1,16 +1,9 @@
-# IMPORTANT
-
-[LOOKING FOR NEW MAINTAINERS](https://github.com/BasqueVoIPMafia/cordova-plugin-iosrtc/issues/353)
-
-This project is no longer maintained. If you are interested in become a maintainer, please comment in the above link.
-
-
 # cordova-plugin-iosrtc
 
 [Cordova](http://cordova.apache.org/) iOS plugin exposing the  ̶f̶u̶l̶l̶ [WebRTC W3C JavaScript APIs](http://www.w3.org/TR/webrtc/).
 
 * [Public Google Group (mailing list)](https://groups.google.com/forum/#!forum/cordova-plugin-iosrtc) for questions and discussions about *cordova-plugin-iosrtc*.
-* [Bug Tracker](https://github.com/BasqueVoIPMafia/cordova-plugin-iosrtc/issues) for reporting issues and requesting new features (**please** don't use the bug tracker for questions or problems, use the mailing list instead).
+* [Bug Tracker](https://github.com/cordova-rtc/cordova-plugin-iosrtc/issues) for reporting issues and requesting new features (**please** don't use the bug tracker for questions or problems, use the mailing list instead).
 * [NPM package](https://www.npmjs.com/package/cordova-plugin-iosrtc).
 
 
@@ -28,9 +21,10 @@ This plugin was initially developed at eFace2Face, and later maintained by the c
 
 In order to make this Cordova plugin run into a iOS application some requirements must be satisfied in both development computer and target devices:
 
-* Xcode >= 7.2.1
-* iOS >= 9 (run on lower versions at your own risk, but don't report issues)
-* `cordova-ios` 4.X
+* Xcode >= 10.3 (10G8)
+* iOS >= 10.2 (run on lower versions at your own risk, don't report issues)
+* `cordova` >= 7.1.0
+* `cordova-ios` >= 4.5.5
 
 
 ## Installation
@@ -43,6 +37,12 @@ $ cordova plugin add cordova-plugin-iosrtc
 
 (or add it into a `<plugin>` entry in the `config.xml` of your app).
 
+
+* Remove the iOS platform and add it again (this apply "hook" file):
+```bash
+$ cordova platform remove ios
+$ cordova platform add ios
+```
 
 ## Building
 
@@ -119,7 +119,7 @@ If you are using the plugin we would love to [hear back from you](WHO_USES_IT.md
 
 #### iOS Safari and crash on WebSocket events
 
-Don't call plugin methods within WebSocket events (`onopen`, `onmessage`, etc). There is an issue in iOS Safari (see [issue #12](https://github.com/BasqueVoIPMafia/cordova-plugin-iosrtc/issues/12)). Instead run a `setTimeout()` within the WebSocket event if you need to call plugin methods on it.
+Don't call plugin methods within WebSocket events (`onopen`, `onmessage`, etc). There is an issue in iOS Safari (see [issue #12](https://github.com/cordova-rtc/cordova-plugin-iosrtc/issues/12)). Instead run a `setTimeout()` within the WebSocket event if you need to call plugin methods on it.
 
 Or better yet, include the provided [ios-websocket-hack.js](extra/ios-websocket-hack.js) in your app and load into your `index.html` as follows:
 
@@ -142,15 +142,16 @@ See [CHANGELOG.md](./CHANGELOG.md).
 
 ## Author
 
-[Iñaki Baz Castillo](https://inakibaz.me/)
+[Iñaki Baz Castillo](https://inakibaz.me)
 
 
 ### Maintainers
 
-* [Iñaki Baz Castillo](https://inakibaz.me/) (no longer active maintainer)
+* [Harold Thetiot](https://sylaps.com)
+* [Iñaki Baz Castillo](https://inakibaz.me) (no longer active maintainer)
 * [Saúl Ibarra Corretgé](http://bettercallsaghul.com) (no longer active maintainer)
 
-Looking for new maintainers. Interested? Comment [here](https://github.com/BasqueVoIPMafia/cordova-plugin-iosrtc/issues/353).
+Looking for new maintainers. Interested? Comment [here](https://github.com/cordova-rtc/cordova-plugin-iosrtc/issues/353).
 
 
 ## License
